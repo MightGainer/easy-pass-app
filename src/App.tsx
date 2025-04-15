@@ -38,8 +38,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div className="frame">
-        <h1>Password Generator</h1>
-        <p>This password generator creates unique, memorable passwords using random words from different themes, optionally including numbers, capital letters, and special characters for added security.</p>
+        <h1>Easy, secure and memorable</h1>
+        <p><b>This password generator</b> creates unique, memorable passwords using random words from different themes, optionally including numbers, capital letters, and special characters for added security.</p>
+        <p>No data collected.</p>
         <Options
           numWords={numWords}
           setNumWords={setNumWords}
