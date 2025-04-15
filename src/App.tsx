@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
   const copyToClipboard = async () => {
     try {
-      if (password != '') {
+      if (password !== '') {
         await navigator.clipboard.writeText(password);
         setCopied(true);
       }
