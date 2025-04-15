@@ -6,21 +6,26 @@ import './App.css';
 import generatePassword from './passwordGenerator';
 
 const App: React.FC = () => {
-  const [numWords, setNumWords] = useState<number>(3);
-  const [useCapitals, setUseCapitals] = useState<boolean>(false);
-  const [useSpecialChar, setUseSpecialChar] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>('');
-  const [useNumbers, setUseNumbers] = useState<boolean>(true);
+  const startingNumWords = 3;
+  const startingUseCapitals = false;
+  const startingUseSpecialChar = false;
+  const startinguseNumbers = true;
+  const [numWords, setNumWords] = useState<number>(startingNumWords);
+  const [useCapitals, setUseCapitals] = useState<boolean>(startingUseCapitals);
+  const [useSpecialChar, setUseSpecialChar] = useState<boolean>(startingUseSpecialChar);
+  const [useNumbers, setUseNumbers] = useState<boolean>(startinguseNumbers);
+  const [password, setPassword] = useState<string>(generatePassword(startingNumWords, startingUseCapitals, startingUseSpecialChar, startinguseNumbers));
   const [copied, setCopied] = useState<boolean>(false);
 
   function setPasswordToState() {
-    generatePassword(
+    let newPassword = generatePassword(
       numWords,
       useCapitals,
       useSpecialChar,
-      useNumbers,
-      setPassword);
+      useNumbers
+    );
 
+    setPassword(newPassword);
     setCopied(false); // Reset copied status when generating a new password
   }
 
@@ -42,6 +47,7 @@ const App: React.FC = () => {
         <p><b>This password generator</b> creates unique, memorable passwords using random words from different themes, optionally including numbers, capital letters, and special characters for added security.</p>
         <p>No data collected.</p>
         <Options
+          generatePasswordCallback={setPasswordToState}
           numWords={numWords}
           setNumWords={setNumWords}
           useCapitals={useCapitals}

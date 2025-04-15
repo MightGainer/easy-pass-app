@@ -1,4 +1,5 @@
 interface OptionsProps {
+    generatePasswordCallback: CallableFunction;
     numWords: number;
     setNumWords: React.Dispatch<React.SetStateAction<number>>;
     useCapitals: boolean;
@@ -10,6 +11,7 @@ interface OptionsProps {
   }
   
 const Options: React.FC<OptionsProps> = ({
+    generatePasswordCallback,
     numWords,
     setNumWords,
     useCapitals,
@@ -17,7 +19,7 @@ const Options: React.FC<OptionsProps> = ({
     useSpecialChar,
     setUseSpecialChar,
     useNumbers,
-    setUseNumbers 
+    setUseNumbers
 }) => {
     return (
       <div className="options">
@@ -28,7 +30,12 @@ const Options: React.FC<OptionsProps> = ({
             value={numWords}
             min="1"
             max="10"
-            onChange={(e) => setNumWords(parseInt(e.target.value) || 3)}
+            onChange={
+                (e) => {
+                    generatePasswordCallback();
+                    setNumWords(parseInt(e.target.value) || 3);
+                }
+            }
           />
         </label>
         <label>
@@ -51,7 +58,12 @@ const Options: React.FC<OptionsProps> = ({
           <input
             type="checkbox"
             checked={useNumbers}
-            onChange={(e) => setUseNumbers(e.target.checked)}
+            onChange={
+                (e) => {
+                    generatePasswordCallback();
+                    setUseNumbers(e.target.checked);
+                }
+            }
           />
           Include Numbers
         </label>

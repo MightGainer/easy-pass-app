@@ -14,9 +14,8 @@ function generatePassword(
     numWords: number, 
     useCapitals: boolean, 
     useSpecialChar: boolean, 
-    useNumbers: boolean,
-    setPassword: CallableFunction
-) {
+    useNumbers: boolean
+): string {
     let parts: string[] = [];
 
     for (let i = 0; i < numWords; i++) {
@@ -49,7 +48,7 @@ function generatePassword(
         parts = parts.map(part => part.replace(symbols[randomIndexForSymbolCapital], symbols[randomIndexForSymbolCapital].toUpperCase()));
     }
 
-    setPassword(parts.join('-'));
+    return parts.join('-');
 }
 
 export default generatePassword;
