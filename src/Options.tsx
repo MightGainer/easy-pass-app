@@ -42,7 +42,12 @@ const Options: React.FC<OptionsProps> = ({
           <input
             type="checkbox"
             checked={useCapitals}
-            onChange={(e) => setUseCapitals(e.target.checked)}
+            onChange={
+                (e) => {
+                    generatePasswordCallback();
+                    setUseCapitals(e.target.checked)
+                }
+            }
           />
           Include Capitals
         </label>
@@ -50,7 +55,12 @@ const Options: React.FC<OptionsProps> = ({
           <input
             type="checkbox"
             checked={useSpecialChar}
-            onChange={(e) => setUseSpecialChar(e.target.checked)}
+            onChange={
+                (e) => {
+                    generatePasswordCallback();
+                    setUseSpecialChar(e.target.checked)
+                }
+            }
           />
           Include Special Characters
         </label>
