@@ -32,8 +32,8 @@ const Options: React.FC<OptionsProps> = ({
             max="10"
             onChange={
                 (e) => {
-                    generatePasswordCallback();
                     setNumWords(parseInt(e.target.value) || 3);
+                    generatePasswordCallback();
                 }
             }
           />
@@ -44,8 +44,8 @@ const Options: React.FC<OptionsProps> = ({
             checked={useCapitals}
             onChange={
                 (e) => {
+                    setUseCapitals(e.target.checked);
                     generatePasswordCallback();
-                    setUseCapitals(e.target.checked)
                 }
             }
           />
@@ -57,8 +57,8 @@ const Options: React.FC<OptionsProps> = ({
             checked={useSpecialChar}
             onChange={
                 (e) => {
+                    setUseSpecialChar(e.target.checked);
                     generatePasswordCallback();
-                    setUseSpecialChar(e.target.checked)
                 }
             }
           />
@@ -70,8 +70,8 @@ const Options: React.FC<OptionsProps> = ({
             checked={useNumbers}
             onChange={
                 (e) => {
-                    generatePasswordCallback();
                     setUseNumbers(e.target.checked);
+                    generatePasswordCallback();
                 }
             }
           />
